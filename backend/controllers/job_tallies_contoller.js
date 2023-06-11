@@ -1,13 +1,21 @@
-const job_tallies=require('express').Router()
+const router=require('express').Router()
 const db=require('../models')
-const {job_tally}=db
+const {Jobs_Applieds}=db
 
 
-job_tallies.post('/tallies', async(req,res)=>{
+router.get('/', async(req,res)=>{
     try{
-        console.log(req.body)
+       const jobs_=await Jobs_Applieds.findAll()
+       res.json(jobs_) 
     }catch(error){
         res.status(500).json(error)
     }
 })
-module.exports = job_tallies;
+router.post('/', async (req,res)=>{
+   try{ const jobs_=await Jobs_Applieds.create(req.body)
+    res.json(jobs_)
+   }catch(error){
+    res.status(500).json(error)
+   }
+})
+module.exports = router;

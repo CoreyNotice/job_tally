@@ -2,20 +2,23 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Job_Tallies', {
+    await queryInterface.createTable('jobs_applieds', {
       id: {
-        allowNull: true,
+        allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      date: {
-        type: Sequelize.STRING
+      Jobs_Applied: {
+        type: Sequelize.INTEGER,
+        allowNUll:true,
       },
-      jobs_applied: {
-        type: Sequelize.INTEGER
+      Date: {
+        type: Sequelize.DATE,
+        allowNull:true,
+        
       },
-      created_at: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
