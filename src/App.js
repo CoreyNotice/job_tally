@@ -1,5 +1,8 @@
-import Title_Goal from "./components/Title_Goal";
-import Jobs_Applied from "./components/Jobs_Applied";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Auth } from "./pages/Auth";
+import { Navbar } from "./components/Navbar";
+
 
 
 
@@ -8,10 +11,15 @@ function App() {
  
   return ( 
 
-   <>
-      <Title_Goal />
-      <Jobs_Applied />
-      </>
+   <div className="App">
+    <Router>
+      <Navbar/>
+      <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/auth" element={<Auth/>}/>
+    </Routes>
+      </Router>
+      </div>
    
 
   );

@@ -12,7 +12,9 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 const job_talliesController=require('./controllers/job_tallies_contoller')
-app.use('/',job_talliesController)
+app.use('/job_tally',job_talliesController)
+const User_Controller=require('./controllers/User_Controller')
+app.use('/auth',User_Controller)
 
 app.get('/',(req,res)=>{
     res.send('Welcome to JOB Tally')

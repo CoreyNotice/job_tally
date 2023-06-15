@@ -2,21 +2,24 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('jobs_applieds', {
+    await queryInterface.createTable('Tallies', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      Jobs_Applied: {
-        type: Sequelize.INTEGER,
-        allowNUll:true,
+      Job_Applied: {
+        type: Sequelize.INTEGER
       },
-      Date: {
-        type: Sequelize.DATE,
-        allowNull:true,
-        
+      Phone_Video_Screens: {
+        type: Sequelize.INTEGER
+      },
+      Job_Interviews: {
+        type: Sequelize.INTEGER
+      },
+      Job_Offers: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -29,6 +32,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropAllTables();
+    await queryInterface.dropTable('Tallies');
   }
 };
