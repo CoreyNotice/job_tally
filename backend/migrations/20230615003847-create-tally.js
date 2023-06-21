@@ -21,6 +21,16 @@ module.exports = {
       Job_Offers: {
         type: Sequelize.INTEGER
       },
+      userOwnerId:{
+        type:Sequelize.INTEGER,
+        allowNull:false,
+        references:{
+          model:'User',
+          key:'id',
+        },
+        onUpdate:'CASCADE',
+        onDelete:'CASCADE',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

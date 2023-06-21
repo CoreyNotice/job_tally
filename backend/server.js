@@ -15,6 +15,8 @@ const job_talliesController=require('./controllers/job_tallies_contoller')
 app.use('/job_tally',job_talliesController)
 const User_Controller=require('./controllers/User_Controller')
 app.use('/auth',User_Controller)
+const Calc_Controller=require('./controllers/calc')
+app.use('/calc',Calc_Controller)
 
 app.get('/',(req,res)=>{
     res.send('Welcome to JOB Tally')

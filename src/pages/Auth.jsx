@@ -1,6 +1,7 @@
 import React, { useState } from 'react' 
 import axios from 'axios'
-
+import { useCookies } from 'react-cookie';
+import {useNavigate} from 'react-router-dom'
 export function Auth() {
   return (
     <div>
@@ -10,20 +11,30 @@ export function Auth() {
   );
 };
 const Login=()=>{
-    const [username,setUsername]=useState("")
+    const [userName,setUsername]=useState("")
     const [password,setPassword]=useState("")
+
+    const [_, setCookies]=useCookies(["access_token"])
+
+    const navigate=useNavigate()
     const onSubmit=async (event)=>{
      event.preventDefault();
      try{
-      await axios.post("")
+      const response =await axios.post('http://localhost:1020/auth/login',{
+        userName,
+        password,
+      });
+      setCookies("access_token", response.data.token);
+      window.localStorage.setItem("userID",response.data.userID);
+      navigate("/")
      }catch(err){
-
+        console.log(err);
      }
 
 
     }
     return (
-        <Form username={username} 
+        <Form userName={userName} 
         password={password} 
         setUsername={setUsername} 
         setPassword={setPassword}
@@ -33,19 +44,23 @@ const Login=()=>{
 )
 }
 const Register=()=>{
-    const [username,setUsername]=useState("")
+    const [userName,setUsername]=useState("")
     const [password,setPassword]=useState("")
-    const onSubmit=async (event)=>{
+    const onSubmit = async (event) => {
         event.preventDefault();
-        try{
-         await axios.post("")
-        }catch(err){
-   
+        try {
+          await axios.post('http://localhost:1020/auth/register', {
+            userName,
+            password,
+          });
+          alert("Registration Completed! Now login.");
+        } catch (err) {
+          console.log(err);
         }
-    }
+      };
     return (
         <Form  
-        username={username} 
+        username={userName} 
         password={password} 
         setUsername={setUsername} 
         setPassword={setPassword}
@@ -54,7 +69,7 @@ const Register=()=>{
         />
 )
 }
-const Form=({username,
+const Form=({userName,
     setUsername,
     password,
     setPassword,
@@ -70,13 +85,13 @@ const Form=({username,
                <input 
                type="text"
                 id="username"
-                value={username}
+                value={userName}
                 onChange={(event)=>setUsername(event.target.value)}/>
            </div>
            <div>
                <label htmlFor='password'>Password:</label>
                <input 
-               type='text' 
+               type='password' 
                id='password' 
                value={password}
                onChange={(event)=>setPassword(event.target.value)}/>

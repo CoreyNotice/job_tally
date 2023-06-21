@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.Home {
+background-color:rgb(246, 241, 233);
+
+}
+Card{
+  background-color:rgb(255, 132, 0)
+}
+.navbar{
+  background-color:rgb(79, 32, 13)
+}
+.btn.btn-primary{
+  background-color:rgb(79, 32, 13)
+}
+.title{
+  font-family: 'Tangerine', serif;
+  font-size: 48px;
+  font-weight: bold;
+
+}
+
+*{
+  font-family: 'Pacifico', cursive;
+}
+.home_nav{
+  color:rgb(246, 241, 233)
+}
+.login_nav{
+  color:rgb(246, 241, 233)
+}
