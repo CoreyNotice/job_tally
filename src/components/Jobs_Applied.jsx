@@ -104,7 +104,7 @@ function Jobs_Applied() {
       </Card>
     ))
   ) : (
-    <div>No jobs available</div>
+    <div></div>
   )}
 </div> 
          <div className="position-relative ">  
